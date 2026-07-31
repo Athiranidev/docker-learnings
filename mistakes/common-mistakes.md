@@ -36,3 +36,38 @@ docker ps -a
 
 - Containers have their own filesystem.
 - Files created inside a container remain inside that container unless you use volumes or copy them to the host.
+
+## Common Mistakes
+
+### Mistake 1
+
+❌ docker run -ai ubuntu-demo
+
+Reason:
+docker run expects an image, not a container name.
+
+Correct:
+docker start -ai ubuntu-demo
+
+---
+
+### Mistake 2
+
+❌ docker exec -t ubuntu-demo abc
+
+Reason:
+abc is not a valid executable.
+
+Correct:
+docker exec -it ubuntu-demo bash
+
+---
+
+### Mistake 3
+
+Thinking docker stop removes the container.
+
+Reality:
+docker stop only stops the container.
+
+docker rm removes it.

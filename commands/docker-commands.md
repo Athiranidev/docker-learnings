@@ -95,3 +95,38 @@ Displays all Docker images available on the local machine.
 - `docker start` starts an **existing stopped container**.
 - `docker ps` shows **running containers only**.
 - `docker ps -a` shows **all containers**.
+
+# Docker Container Lifecycle Commands
+
+## Create a New Container
+docker run -it ubuntu bash
+
+## Create and Run in Background
+docker run -dit --name ubuntu-demo ubuntu bash
+
+## List Running Containers
+docker ps
+
+## List All Containers
+docker ps -a
+
+## Enter a Running Container
+docker exec -it ubuntu-demo bash
+
+## Stop a Container
+docker stop ubuntu-demo
+
+## Start a Stopped Container
+docker start ubuntu-demo
+
+## Start and Attach
+docker start -ai ubuntu-demo
+
+## Restart a Container
+docker restart ubuntu-demo
+
+## Remove a Container
+docker rm ubuntu-demo
+
+## Force Remove a Running Container
+docker rm -f ubuntu-demo

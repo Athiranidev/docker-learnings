@@ -72,3 +72,42 @@ run → Creates and starts a new container
 ubuntu → Image name
 bash → Command executed inside the container
 
+## Docker Container Lifecycle Interview Questions
+
+### Difference between docker run and docker start
+
+docker run creates a new container from an image.
+
+docker start starts an existing stopped container.
+
+---
+
+### Difference between docker exec and docker run
+
+docker run creates a new container.
+
+docker exec runs a command or opens a shell inside an existing running container.
+
+---
+
+### What happens when you exit after docker exec?
+
+Only the shell process started by docker exec exits.
+
+The container keeps running because its main process (PID 1) is still active.
+
+---
+
+### Difference between docker ps and docker ps -a
+
+docker ps shows only running containers.
+
+docker ps -a shows all containers including stopped ones.
+
+---
+
+### Difference between docker stop and docker rm
+
+docker stop stops a running container.
+
+docker rm removes a stopped container.

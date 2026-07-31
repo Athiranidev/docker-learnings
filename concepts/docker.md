@@ -66,3 +66,26 @@ Docker is an open-source containerization platform that packages an application 
 - Containers share the host operating system kernel.
 - Docker solves the "It works on my machine" problem.
 - Docker makes applications portable and consistent.
+
+## Docker Container Lifecycle
+
+Docker containers move through different states during their lifecycle.
+
+Created
+↓
+Running
+↓
+Stopped (Exited)
+↓
+Started Again
+↓
+Removed
+
+Docker provides commands to manage each stage:
+
+- docker run
+- docker start
+- docker stop
+- docker restart
+- docker exec
+- docker rm
