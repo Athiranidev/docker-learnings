@@ -130,3 +130,36 @@ docker rm ubuntu-demo
 
 ## Force Remove a Running Container
 docker rm -f ubuntu-demo
+
+# Docker Image Commands
+
+## List Images
+
+```bash
+docker images
+docker image ls
+```
+
+## Download an Image
+
+```bash
+docker pull nginx
+```
+
+## Run Nginx Container
+
+```bash
+docker run -d --name my-nginx -p 8080:80 nginx
+```
+
+## View Container Logs
+
+```bash
+docker logs my-nginx
+```
+
+## Follow Logs
+
+```bash
+docker logs -f my-nginx
+```

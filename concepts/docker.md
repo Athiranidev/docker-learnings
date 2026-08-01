@@ -89,3 +89,49 @@ Docker provides commands to manage each stage:
 - docker restart
 - docker exec
 - docker rm
+
+## Docker Images
+
+- Docker image is a read-only template.
+- One image can create multiple containers.
+- Images contain application code, libraries and dependencies.
+
+---
+
+## Docker Image Layers
+
+- Docker images are made up of multiple read-only layers.
+- Layers are shared between images.
+- Layers improve storage efficiency and download speed.
+
+---
+
+## Port Mapping
+
+Syntax:
+
+```bash
+-p HOST_PORT:CONTAINER_PORT
+```
+
+Example:
+
+```bash
+docker run -d --name my-nginx -p 8080:80 nginx
+```
+
+- Host Port = 8080
+- Container Port = 80
+
+---
+
+## Docker Logs
+
+Docker logs display the application's stdout and stderr.
+
+Useful for:
+
+- Startup messages
+- Runtime logs
+- Errors
+- Troubleshooting

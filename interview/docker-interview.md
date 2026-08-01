@@ -111,3 +111,45 @@ docker ps -a shows all containers including stopped ones.
 docker stop stops a running container.
 
 docker rm removes a stopped container.
+
+## Docker Image Interview Questions
+
+### What is a Docker Image?
+
+A Docker image is a read-only template used to create containers.
+
+---
+
+### Difference between docker pull and docker run
+
+docker pull downloads only the image.
+
+docker run downloads (if required), creates and starts a container.
+
+---
+
+### What does -p 8080:80 mean?
+
+8080 is the host port.
+
+80 is the container port.
+
+Docker forwards traffic from host port 8080 to container port 80.
+
+---
+
+### Difference between docker logs and docker exec
+
+docker logs displays application logs.
+
+docker exec executes commands inside a running container.
+
+---
+
+### Can two containers use the same host port?
+
+No.
+
+Each host port can be bound to only one container.
+
+Different host ports such as 8080 and 8081 should be used.
