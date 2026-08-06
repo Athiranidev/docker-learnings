@@ -71,3 +71,92 @@ Reality:
 docker stop only stops the container.
 
 docker rm removes it.
+
+## Common Mistakes
+
+### Mistake
+
+Trying to use the same host port for multiple containers.
+
+Incorrect:
+
+```bash
+docker run -d -p 8080:80 nginx
+docker run -d -p 8080:80 nginx
+```
+
+Correct:
+
+```bash
+docker run -d -p 8080:80 nginx
+docker run -d -p 8081:80 nginx
+```
+
+---
+
+### Mistake
+
+Confusing docker logs with docker exec.
+
+docker logs is used for viewing application logs.
+
+docker exec is used for executing commands inside a running container.
+
+## Common Mistakes
+
+### Mistake
+
+Trying to remove an image while containers still exist.
+
+Incorrect:
+
+```bash
+docker rmi nginx
+```
+
+Error:
+
+```
+conflict: unable to delete image
+```
+
+Correct:
+
+```bash
+docker rm my-nginx nginx1 nginx2
+docker rmi nginx
+```
+
+---
+
+### Mistake
+
+Thinking `docker ps -a` shows images.
+
+Reality:
+
+- `docker ps -a` shows containers.
+- `docker images` shows images.
+
+## Docker Volume Mistakes
+
+### Mistake
+
+Assuming container data persists after container deletion.
+
+Reality:
+
+Data stored in the container's writable layer is deleted with the container.
+
+Use Docker volumes for persistent data.
+
+---
+
+### Mistake
+
+Trying to remove a volume while it is still being used by a container.
+
+Correct approach:
+
+1. Remove the container.
+2. Remove the volume.

@@ -163,3 +163,33 @@ docker logs my-nginx
 ```bash
 docker logs -f my-nginx
 ```
+
+# Docker Image Removal Commands
+
+## List Images
+
+```bash
+docker images
+docker image ls
+```
+
+## Remove an Image
+
+```bash
+docker rmi nginx
+```
+
+## Remove an Image using Image ID
+
+```bash
+docker rmi <image_id>
+```
+
+## Docker Volume Commands
+
+```bash
+docker volume create my-volume
+docker volume ls
+docker volume inspect my-volume
+docker volume rm my-volume
+```

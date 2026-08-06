@@ -135,3 +135,49 @@ Useful for:
 - Runtime logs
 - Errors
 - Troubleshooting
+
+## Docker Image Removal
+
+Docker images can be removed using the `docker rmi` command.
+
+Syntax:
+
+```bash
+docker rmi <image_name>
+```
+
+Example:
+
+```bash
+docker rmi nginx
+```
+
+### Important Points
+
+- `docker rm` removes containers.
+- `docker rmi` removes images.
+- An image cannot be removed if it is referenced by any existing container.
+- The container can be in Running, Exited, or Created state.
+- Remove the containers first, then remove the image.
+
+### Verify Images
+
+```bash
+docker images
+```
+
+## Docker Volumes
+
+A Docker volume is a Docker-managed persistent storage mechanism used to store data outside a container's writable layer.
+
+### Key Points
+
+- Data persists even if the container is removed.
+- Volumes are managed by Docker.
+- Multiple containers can mount the same volume.
+- Volumes are stored on the host machine.
+- By default, Docker stores volumes under:
+
+```
+/var/lib/docker/volumes/
+```

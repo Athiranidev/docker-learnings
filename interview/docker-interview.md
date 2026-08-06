@@ -153,3 +153,69 @@ No.
 Each host port can be bound to only one container.
 
 Different host ports such as 8080 and 8081 should be used.
+
+## Docker Image Removal Interview Questions
+
+### Difference between docker rm and docker rmi
+
+- `docker rm` removes containers.
+- `docker rmi` removes images.
+
+---
+
+### Why can't Docker remove an image?
+
+Docker does not allow an image to be removed if it is referenced by one or more containers.
+
+The containers must be removed first.
+
+---
+
+### Does stopping a container allow the image to be removed?
+
+No.
+
+Even a stopped (Exited) or Created container still references its image.
+
+---
+
+### Does removing a container automatically remove the image?
+
+No.
+
+The image remains in the local Docker image cache until `docker rmi` is executed.
+
+## Docker Volumes Interview Questions
+
+### What is a Docker Volume?
+
+A Docker volume is persistent storage managed by Docker that stores data independently of containers.
+
+---
+
+### Why are Docker volumes used?
+
+Docker volumes preserve application data even after containers are removed.
+
+---
+
+### Where are Docker volumes stored?
+
+By default:
+
+```
+/var/lib/docker/volumes/
+```
+
+---
+
+### What does `docker volume inspect` do?
+
+Displays detailed information about a Docker volume, including its mount point, driver, and metadata.
+
+---
+
+### Does deleting a container delete its volume?
+
+No. Volumes exist independently and must be removed explicitly.
+
