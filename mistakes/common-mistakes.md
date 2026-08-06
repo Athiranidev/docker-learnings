@@ -160,3 +160,31 @@ Correct approach:
 
 1. Remove the container.
 2. Remove the volume.
+
+## Bind Mount Mistakes
+
+### Mistake
+
+Using the wrong host path while creating a bind mount.
+
+Incorrect:
+
+```bash
+-v ~/bind-demo:/usr/share/nginx/html
+```
+
+Correct:
+
+```bash
+-v ~/DevOps/docker/docker-learnings/bind-demo:/usr/share/nginx/html
+```
+
+---
+
+### Mistake
+
+Thinking bind mounts copy files into the container.
+
+Reality:
+
+The container accesses the same files directly from the host machine.

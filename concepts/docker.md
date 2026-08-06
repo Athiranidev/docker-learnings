@@ -181,3 +181,22 @@ A Docker volume is a Docker-managed persistent storage mechanism used to store d
 ```
 /var/lib/docker/volumes/
 ```
+## Docker Bind Mounts
+
+A bind mount maps an existing file or directory from the host machine directly into a container.
+
+### Key Points
+
+- The host directory is chosen by the user.
+- Docker does not manage the host directory.
+- Changes made on the host are immediately reflected inside the container.
+- Bind mounts are commonly used during application development.
+
+### Docker Volume vs Bind Mount
+
+| Docker Volume | Bind Mount |
+|---------------|------------|
+| Managed by Docker | Managed by the host |
+| Docker chooses storage location | User chooses storage location |
+| Best for persistent application data | Best for source code and development |
+| Stored under `/var/lib/docker/volumes/` | Uses any existing host directory |

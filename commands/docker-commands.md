@@ -193,3 +193,26 @@ docker volume ls
 docker volume inspect my-volume
 docker volume rm my-volume
 ```
+# Docker Bind Mount Commands
+
+## Run a Container with a Bind Mount
+
+```bash
+docker run -d \
+--name nginx-bind \
+-p 8082:80 \
+-v ~/DevOps/docker/docker-learnings/bind-demo:/usr/share/nginx/html \
+nginx
+```
+
+## Enter the Running Container
+
+```bash
+docker exec -it nginx-bind bash
+```
+
+## Verify Mounted Files
+
+```bash
+cat /usr/share/nginx/html/index.html
+```

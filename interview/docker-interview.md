@@ -219,3 +219,22 @@ Displays detailed information about a Docker volume, including its mount point, 
 
 No. Volumes exist independently and must be removed explicitly.
 
+## Docker Bind Mount Interview Questions
+
+### What is a Bind Mount?
+
+A bind mount maps an existing directory or file from the host machine directly into a container.
+
+---
+
+### Difference between Docker Volume and Bind Mount?
+
+Docker volumes are managed by Docker and are mainly used for persistent application data.
+
+Bind mounts use an existing host directory and are mainly used during development to share source code and configuration files.
+
+---
+
+### When should you use Bind Mounts?
+
+Use bind mounts when developing applications and you want changes made on the host to be immediately visible inside the container.
