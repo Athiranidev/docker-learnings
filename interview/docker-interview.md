@@ -238,3 +238,140 @@ Bind mounts use an existing host directory and are mainly used during developmen
 ### When should you use Bind Mounts?
 
 Use bind mounts when developing applications and you want changes made on the host to be immediately visible inside the container.
+
+---
+
+# Docker Networking Interview Questions
+
+## What is Docker Networking?
+
+Docker networking provides communication between containers, the host machine, and external networks.
+
+## What are the default Docker networks?
+
+Docker provides three default networks:
+
+- `bridge`
+- `host`
+- `none`
+
+## What is the bridge network?
+
+The bridge network is Docker's default network for containers that are not explicitly connected to another network.
+
+## What is a subnet?
+
+A subnet is an IP address range used by a network.
+
+Example:
+
+```text
+172.17.0.0/16
+```
+
+## What is a gateway?
+
+A gateway is the entry and exit point between a network and other networks.
+
+Example:
+
+```text
+172.17.0.1
+```
+
+## How does a Docker container get an IP address?
+
+Docker's network system automatically assigns an IP address to a container when it connects to a network.
+
+## How can you check a Docker network?
+
+Use:
+
+```bash
+docker network inspect <network-name>
+```
+
+## How can you check a container's IP from inside the container?
+
+Use:
+
+```bash
+hostname -I
+```
+
+## What is the difference between port mapping and Docker networking?
+
+Port mapping allows traffic from the host or external clients to reach a container service, while Docker networking provides communication between containers and networks.
+
+## What does `docker exec -it` do?
+
+It allows a command to be executed interactively inside a running container.
+
+Example:
+
+```bash
+docker exec -it network-demo bash
+```
+
+## Dockerfile Interview Questions
+
+### What is a Dockerfile?
+
+A Dockerfile is a text file containing instructions used to build a Docker image.
+
+### What is FROM?
+
+FROM specifies the base image used to build the Docker image.
+
+### What is RUN?
+
+RUN executes commands during the image build process.
+
+### What is CMD?
+
+CMD specifies the default command that runs when a container starts.
+
+### What is COPY?
+
+COPY copies files from the build context into the Docker image.
+
+### What is the difference between RUN and CMD?
+
+RUN executes during image build, while CMD executes when the container starts.
+
+### What is the difference between docker build and docker run?
+
+docker build creates an image from a Dockerfile, while docker run creates and starts a container from an image.
+
+### What is the difference between docker pull and docker build?
+
+docker pull downloads an existing image from a registry, while docker build creates a new image using a Dockerfile.
+
+### What does the . mean in docker build?
+
+The . specifies the current directory as the Docker build context.
+
+### What is a Docker build context?
+
+The build context is the set of files available to Docker during an image build.
+
+### What happens if a container already exists with the same name?
+
+docker run creates a new container, so Docker returns a name conflict. Use docker start to start the existing stopped container, or remove the old container and create a new one.
+
+### Does exit remove a container?
+
+No. exit stops the container but does not remove it.
+
+### Why is CMD ["nginx", "-g", "daemon off;"] commonly used?
+
+It keeps Nginx running in the foreground so it remains the main process of the container.
+
+### Can a Dockerfile contain multiple RUN instructions?
+
+Yes. Each RUN instruction creates a new image layer.
+
+### Can a Dockerfile have multiple CMD instructions?
+
+A Dockerfile should have only one effective CMD. If multiple CMD instructions are specified, only the last one takes effect.
+

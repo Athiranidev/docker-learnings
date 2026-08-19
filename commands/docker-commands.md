@@ -216,3 +216,61 @@ docker exec -it nginx-bind bash
 ```bash
 cat /usr/share/nginx/html/index.html
 ```
+
+---
+
+# Docker Networking Commands
+
+## List Networks
+
+```bash
+docker network ls
+```
+
+Lists all Docker networks.
+
+## Inspect a Network
+
+```bash
+docker network inspect bridge
+```
+
+Displays detailed information about a Docker network.
+
+## Run a Container in Background Mode
+
+```bash
+docker run -dit --name network-demo ubuntu bash
+```
+
+Runs an interactive container in detached mode.
+
+## Enter a Running Container
+
+```bash
+docker exec -it network-demo bash
+```
+
+Opens an interactive Bash shell inside the running container.
+
+## Check Container IP
+
+Inside the container:
+
+```bash
+hostname -I
+```
+
+Displays the container's IP address.
+
+## Dockerfile Commands
+
+docker build -t <image>:<tag> .
+
+docker run <image>:<tag>
+
+docker start <container>
+
+docker images
+
+docker pull <image>

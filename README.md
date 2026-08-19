@@ -17,6 +17,7 @@ A structured hands-on Docker learning repository covering Docker fundamentals, c
 - ✅ Docker Image Removal
 - ✅ Docker Volumes
 - ✅ Docker Bind Mounts
+- ✅ Docker Networking Basics
 
 ## 🧪 Hands-on Labs
 
@@ -27,6 +28,7 @@ A structured hands-on Docker learning repository covering Docker fundamentals, c
 - ✅ Lab 05 – Docker Image Removal
 - ✅ Lab 06 – Docker Volumes
 - ✅ Lab 07 – Docker Bind Mounts
+- ✅ Lab 08 – Docker Networking Basics
 
 ## 📂 Repository Structure
 
