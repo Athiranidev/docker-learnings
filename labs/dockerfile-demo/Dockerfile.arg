@@ -1,0 +1,10 @@
+FROM ubuntu
+
+ARG APP_VERSION=1.0
+
+RUN echo "Building application version: $APP_VERSION"
+
+ENV APP_VERSION=$APP_VERSION
+
+CMD ["bash"]
+

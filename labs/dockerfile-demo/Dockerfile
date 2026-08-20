@@ -1,5 +1,10 @@
 FROM ubuntu
 
-COPY index.html /app/index.html
+WORKDIR /app
 
-CMD ["cat", "/app/index.html"]
+ENV APP_NAME="DockerLearning"
+ENV APP_ENV="development"
+
+COPY index.html .
+
+CMD ["cat", "index.html"]
