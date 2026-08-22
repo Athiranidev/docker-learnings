@@ -141,3 +141,89 @@ and displays:
 - docker run creates and starts a container.
 - docker start starts an existing stopped container.
 - exit stops a container but does not remove it.
+
+## ENTRYPOINT
+
+ENTRYPOINT defines the main executable of a container.
+
+Example:
+
+    ENTRYPOINT ["echo"]
+
+## CMD
+
+CMD defines the default command or default arguments for a container.
+
+Example:
+
+    CMD ["Hello Docker"]
+
+## ENTRYPOINT + CMD
+
+ENTRYPOINT and CMD can work together.
+
+Example:
+
+    ENTRYPOINT ["echo"]
+    CMD ["Hello Docker"]
+
+Running the image uses:
+
+    echo "Hello Docker"
+
+A value supplied with docker run replaces the CMD value while keeping the ENTRYPOINT.
+
+Example:
+
+    docker run --rm entrypoint-demo:v1 "Hello DevOps"
+
+This effectively runs:
+
+    echo "Hello DevOps"
+
+## CMD vs ENTRYPOINT
+
+CMD can be completely replaced by a command supplied during docker run.
+
+ENTRYPOINT defines the main executable, while CMD provides default arguments.
+
+## --entrypoint
+
+The --entrypoint option overrides the ENTRYPOINT defined in the image.
+
+Example:
+
+    docker run --rm --entrypoint printf entrypoint-demo:v2 "Hello %s\n" DevOps
+
+This runs:
+
+    printf "Hello %s\n" DevOps
+
+## Container Exit Status
+
+A container runs while its main process is running.
+
+When the main process finishes, the container stops.
+
+    Exited (0)
+
+means the main process completed successfully. It does not necessarily indicate an error.
+
+## Base Image ENTRYPOINT and CMD
+
+A base image may already provide its own ENTRYPOINT or CMD.
+
+When creating a Dockerfile from such an image, we do not always need to redefine them.
+
+For example, the official Nginx image already provides its startup configuration.
+
+## Troubleshooting ENTRYPOINT
+
+If a container exits immediately, check:
+
+    docker ps -a
+    docker logs <container>
+
+Then investigate the ENTRYPOINT and CMD to determine why the main process exited.
+
+The container should not be restarted immediately without understanding the cause.

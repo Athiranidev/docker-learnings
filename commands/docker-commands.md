@@ -274,3 +274,41 @@ docker start <container>
 docker images
 
 docker pull <image>
+
+## ENTRYPOINT / CMD Commands
+
+Build an image:
+
+    docker build -t entrypoint-demo:v1 .
+
+Run using the default ENTRYPOINT and CMD:
+
+    docker run --rm entrypoint-demo:v1
+
+Override CMD arguments:
+
+    docker run --rm entrypoint-demo:v1 "Hello DevOps"
+
+Override ENTRYPOINT:
+
+    docker run --rm --entrypoint printf entrypoint-demo:v2 "Hello %s\n" DevOps
+
+Run a shell by overriding ENTRYPOINT:
+
+    docker run --rm -it --entrypoint bash <image>
+
+Check running containers:
+
+    docker ps
+
+Check all containers:
+
+    docker ps -a
+
+Check container logs:
+
+    docker logs <container>
+
+Inspect container configuration:
+
+    docker inspect <container>
