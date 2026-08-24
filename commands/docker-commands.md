@@ -275,6 +275,65 @@ docker images
 
 docker pull <image>
 
+# Dockerized Nginx Application - Commands
+
+## Create Lab
+
+mkdir -p labs/dockerfile-app
+cd labs/dockerfile-app
+
+## Create HTML File
+
+echo "Hello from my Dockerized application" > index.html
+
+cat index.html
+
+## Build Image
+
+docker build -t my-nginx:v1 .
+
+## Run Container
+
+docker run -d --name my-nginx -p 8081:80 my-nginx:v1
+
+## Check Container
+
+docker ps
+
+## Enter Running Container
+
+docker exec -it my-nginx bash
+
+## Check Nginx Web Root
+
+cat /usr/share/nginx/html/index.html
+
+ls -la /usr/share/nginx/html/
+
+## Exit Container
+
+exit
+
+## Test Application
+
+curl http://localhost:8081
+
+## Check Port Mapping
+
+docker port my-nginx
+
+## Check Logs
+
+docker logs my-nginx
+
+## Stop Container
+
+docker stop my-nginx
+
+## Remove Container
+
+docker rm my-nginx
+
 ## ENTRYPOINT / CMD Commands
 
 Build an image:
@@ -289,11 +348,11 @@ Override CMD arguments:
 
     docker run --rm entrypoint-demo:v1 "Hello DevOps"
 
-Override ENTRYPOINT:
+Override the ENTRYPOINT:
 
     docker run --rm --entrypoint printf entrypoint-demo:v2 "Hello %s\n" DevOps
 
-Run a shell by overriding ENTRYPOINT:
+Run a shell instead of the image ENTRYPOINT:
 
     docker run --rm -it --entrypoint bash <image>
 
@@ -301,7 +360,7 @@ Check running containers:
 
     docker ps
 
-Check all containers:
+Check all containers including stopped containers:
 
     docker ps -a
 
@@ -309,6 +368,69 @@ Check container logs:
 
     docker logs <container>
 
-Inspect container configuration:
+Inspect a container:
+
+    docker inspect <container>
+
+Remove a container:
+
+    docker rm <container>
+
+
+## Docker Networking Commands
+
+List Docker networks:
+
+    docker network ls
+
+Inspect a network:
+
+    docker network inspect <network>
+
+Create a user-defined bridge network:
+
+    docker network create <network>
+
+Create a bridge network explicitly:
+
+    docker network create --driver bridge <network>
+
+Run a container on a specific network:
+
+    docker run -dit --name <container> --network <network> ubuntu bash
+
+Connect an existing container to a network:
+
+    docker network connect <network> <container>
+
+Disconnect a container from a network:
+
+    docker network disconnect <network> <container>
+
+Remove a network:
+
+    docker network rm <network>
+
+Check whether a container can resolve another container:
+
+    getent hosts <container-name>
+
+Execute a command inside a running container:
+
+    docker exec -it <container> bash
+
+Test HTTP communication between containers:
+
+    curl http://<container-name>:<port>
+
+Check running containers:
+
+    docker ps
+
+Check container logs:
+
+    docker logs <container>
+
+Inspect container configuration and network information:
 
     docker inspect <container>
