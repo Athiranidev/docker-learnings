@@ -3,6 +3,14 @@ services:
     image: nginx:latest
     container_name: compose-nginx
 
+    environment:
+     APP_ENV: development
+
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
     ports:
       - "8082:80"
 
@@ -11,3 +19,6 @@ services:
 
   client:
     image: curlimages/curl:latest
+    depends_on:
+        web:
+          condition: service_healthy

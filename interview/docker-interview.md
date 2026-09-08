@@ -375,3 +375,38 @@ Yes. Each RUN instruction creates a new image layer.
 
 A Dockerfile should have only one effective CMD. If multiple CMD instructions are specified, only the last one takes effect.
 
+
+## Docker Compose
+
+### What is Docker Compose?
+
+Docker Compose is a tool used to define and manage multi-container Docker applications using a YAML file (`compose.yaml`).
+
+### Why use Docker Compose?
+
+It allows us to define and manage multiple services, networks, volumes, ports, environment variables, and dependencies in one configuration file instead of running multiple `docker run` commands separately.
+
+### Important Concepts
+
+- **Service** → A definition of a container/application component in `compose.yaml`.
+- **Service name** → Used as a hostname for service-to-service communication through Docker DNS.
+- **Network** → Compose automatically creates a project-specific default network.
+- **Bind mount** → Maps a specific host file/directory into a container; commonly used for development.
+- **Docker volume** → Docker-managed persistent storage; commonly used for application/database data.
+- **depends_on** → Controls service startup order.
+- **healthcheck** → Checks whether a container/application passes a defined health test.
+- **service_healthy** → Allows a dependent service to wait until the dependency passes its healthcheck.
+
+### Important Commands
+
+```bash
+docker compose config
+docker compose up -d
+docker compose ps
+docker compose ps -a
+docker compose logs
+docker compose stop
+docker compose start
+docker compose restart
+docker compose down
+docker compose run --rm <service> <command>
