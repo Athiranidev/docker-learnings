@@ -410,3 +410,141 @@ docker compose start
 docker compose restart
 docker compose down
 docker compose run --rm <service> <command>
+
+## Docker Image Management & Docker Hub
+
+### 1. What is a Docker image tag?
+
+A tag is a reference used to identify a particular version or variant of a Docker image.
+
+Example:
+
+docker:latest
+myapp:v1
+myapp:v2
+
+---
+
+### 2. What does `docker tag` do?
+
+`docker tag` creates another name/reference for an existing Docker image.
+
+Example:
+
+docker tag my-nginx:v2 athiranidev/my-nginx:v1
+
+It does not build a new image.
+
+---
+
+### 3. What is a Docker registry?
+
+A Docker registry is a system used to store and distribute Docker images.
+
+Examples include Docker Hub and private container registries.
+
+---
+
+### 4. What is Docker Hub?
+
+Docker Hub is a hosted container registry where Docker images can be stored and distributed.
+
+Example:
+
+athiranidev/my-nginx:v1
+
+---
+
+### 5. What does `docker push` do?
+
+`docker push` uploads a local Docker image to a container registry.
+
+Example:
+
+docker push athiranidev/my-nginx:v1
+
+---
+
+### 6. What does `docker pull` do?
+
+`docker pull` downloads an image from a container registry to the local Docker environment.
+
+Example:
+
+docker pull athiranidev/my-nginx:v1
+
+---
+
+### 7. Why does Docker show "Mounted from library/nginx" during a push?
+
+Docker images are made of layers.
+
+If a layer already exists in the registry, Docker can reuse that layer instead of uploading it again.
+
+This reduces data transfer and speeds up image pushes.
+
+---
+
+### 8. What is the difference between `docker push` and `docker pull`?
+
+docker push:
+
+Local → Registry
+
+docker pull:
+
+Registry → Local
+
+---
+
+### 9. What is the complete Docker image delivery workflow?
+
+docker build
+↓
+docker tag
+↓
+docker login
+↓
+docker push
+↓
+Docker Registry
+↓
+docker pull
+↓
+docker run
+
+---
+
+### 10. Why use versioned image tags instead of only `latest`?
+
+Versioned tags such as:
+
+myapp:v1
+myapp:v2
+myapp:v3
+
+make image versions easier to identify and support predictable deployments and rollbacks.
+
+`latest` can point to different image contents over time.
+
+---
+
+### 11. Does `docker tag` create a new image?
+
+No.
+
+It creates another reference to an existing image.
+
+Two tags can point to the same image ID.
+
+---
+
+### 12. Can a Docker image pulled from Docker Hub be run directly?
+
+Yes.
+
+Example:
+
+docker run -d --name my-container -p 8080:80 athiranidev/my-nginx:v1
+
+The image is used to create and start a container.
