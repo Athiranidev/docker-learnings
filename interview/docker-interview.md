@@ -548,3 +548,73 @@ Example:
 docker run -d --name my-container -p 8080:80 athiranidev/my-nginx:v1
 
 The image is used to create and start a container.
+
+
+
+```markdown
+## Docker Multi-stage Builds
+
+### 1. What is a multi-stage Docker build?
+
+A multi-stage build uses multiple `FROM` instructions to separate the build environment from the final runtime environment.
+
+---
+
+### 2. Why are multi-stage builds used?
+
+They allow us to exclude compilers, build tools, source code, and other unnecessary build dependencies from the final production image.
+
+Benefits include:
+
+- Smaller images
+- Faster image transfer
+- Smaller attack surface
+- Cleaner production images
+
+---
+
+### 3. What does `FROM ... AS builder` mean?
+
+Example:
+
+FROM golang:1.25 AS builder
+
+It creates a build stage named `builder`.
+
+---
+
+### 4. What does `COPY --from=builder` do?
+
+It copies files from the builder stage into the current stage.
+
+Example:
+
+COPY --from=builder /app/app .
+
+Only the required application artifact is copied.
+
+---
+
+### 5. What is the difference between a single-stage and multi-stage build?
+
+Single-stage builds keep the build environment in the final image.
+
+Multi-stage builds separate the build environment from the runtime environment and copy only the required artifacts into the final image.
+
+---
+
+### 6. Why did our Go image become much smaller?
+
+Our single-stage image was 1.29GB because it contained the complete Go build environment.
+
+The multi-stage image was 16.5MB because the final image contained only Alpine and the compiled application binary.
+
+---
+
+### 7. Does every multi-stage build produce a tiny image?
+
+No.
+
+The final image size depends on the runtime base image, application dependencies, and files copied into the final stage.
+
+The goal is to exclude unnecessary build-time components.
