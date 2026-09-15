@@ -1,0 +1,10 @@
+services:
+  app:
+    image: alpine:latest
+    command: ["sh", "-c", "cat /run/secrets/db_password && sleep 300"]
+    secrets:
+      - db_password
+
+secrets:
+  db_password:
+    file: ./db_password.txt

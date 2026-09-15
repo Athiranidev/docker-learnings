@@ -434,3 +434,31 @@ Check container logs:
 Inspect container configuration and network information:
 
     docker inspect <container>
+
+
+# Run as non-root
+docker run --rm <image>
+
+# Check container user
+docker exec <container> id
+
+# Drop capability
+docker run --rm --cap-drop=NET_RAW alpine
+
+# Read-only filesystem
+docker run --rm --read-only alpine
+
+# Temporary writable /tmp
+docker run --rm --read-only --tmpfs /tmp alpine
+
+# Scan image
+docker scout cves <image>
+
+# Get vulnerability recommendations
+docker scout recommendations <image>
+
+# Build a specific Dockerfile
+docker build -f Dockerfile.scratch -t go-scratch:v1 .
+
+# Run Scratch image
+docker run --rm go-scratch:v1

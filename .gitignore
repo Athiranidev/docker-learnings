@@ -1,0 +1,5 @@
+# Lab secrets
+labs/lab16-nonroot/db_password.txt
+
+# Local Docker Scout installer
+labs/lab16-nonroot/install-scout.sh
