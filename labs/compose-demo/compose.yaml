@@ -7,10 +7,11 @@ services:
      APP_ENV: development
 
     healthcheck:
-      test: ["CMD", "nginx", "-t"]
+      test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 10s
       timeout: 5s
-      retries: 3
+      retries: 3   
+ 
     ports:
       - "8082:80"
 
